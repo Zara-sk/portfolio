@@ -1,16 +1,15 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const HeaderDesktopLazy = lazy(() => import("./HeaderDesktop"));
 const HeaderMobileLazy = lazy(() => import("./HeaderMobile"));
 
-const Header = () => {
-  const state = useTypedSelector((state) => state);
-  const isMobile = false;
+const Header: React.FC = () => {
+  const window_s = useTypedSelector((state) => state.window);
 
   return (
-    <Suspense>
-      {isMobile ? <HeaderMobileLazy /> : <HeaderDesktopLazy />}
+    <Suspense fallback={<div>loading...</div>}>
+      {window_s.is_mobile ? <HeaderMobileLazy /> : <HeaderDesktopLazy />}
     </Suspense>
   );
 };

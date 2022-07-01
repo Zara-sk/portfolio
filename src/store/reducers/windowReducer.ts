@@ -6,6 +6,7 @@ import {
 
 const initialState: windowState = {
   width: 0,
+  is_mobile: false,
   scrollY: 0,
   scrollingUp: false,
   scrollingDown: false,
@@ -28,6 +29,7 @@ export const windowReducer = (
       return {
         ...state,
         width: action.payload,
+        is_mobile: action.payload < 771,
       };
 
     default:
