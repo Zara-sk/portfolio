@@ -2,7 +2,7 @@ import {
   windowState,
   windowAction,
   windowActionTypes,
-} from "../../../types/window";
+} from "../../types/window";
 
 const initialState: windowState = {
   width: 0,
