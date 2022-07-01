@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-
+import React, { Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Footer } from "./components/Footer";
+
 import { HeaderCombined } from "./components/Header";
+import { Footer } from "./components/Footer";
+
 import { useActions } from "./hooks/useActions";
 
-const App = () => {
+const App: React.FC = () => {
   const { fetchWindowWidth, fetchWindowScroll } = useActions();
 
   useEffect(() => {
@@ -22,13 +23,12 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div>
-        <HeaderCombined />
-        <Routes>
-          <Route path={"/test"} element={<div>test</div>} />
-        </Routes>
-        <Footer />
-      </div>
+      <HeaderCombined />
+      <Routes>
+        <Route path={"/"} element={<div>MainPage</div>} />
+        <Route path={"/test"} element={<div>test</div>} />
+      </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   const window_s = useTypedSelector((state) => state.window);
 
   return (
-    <Suspense fallback={<div>loading...</div>}>
+    <Suspense>
       {window_s.is_mobile ? <HeaderMobileLazy /> : <HeaderDesktopLazy />}
     </Suspense>
   );

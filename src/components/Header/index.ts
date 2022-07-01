@@ -1,5 +1,7 @@
-import Header from "./Header";
-import HeaderMobile from "./HeaderMobile";
-import HeaderDesktop from "./HeaderDesktop";
+import { lazy } from "react";
 
-export { Header as HeaderCombined, HeaderMobile, HeaderDesktop };
+const HeaderMobile = lazy(() => import("./HeaderMobile"));
+const HeaderDesktop = lazy(() => import("./HeaderDesktop"));
+
+export { HeaderMobile, HeaderDesktop };
+export { default as HeaderCombined } from "./Header";
