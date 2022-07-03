@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from "react";
+import React, { lazy, Suspense } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const HeaderDesktopLazy = lazy(() => import("./HeaderDesktop"));
@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   const window_s = useTypedSelector((state) => state.window);
 
   return (
-    <Suspense>
+    <Suspense fallback={<div className="header blank"></div>}>
       {window_s.is_mobile ? <HeaderMobileLazy /> : <HeaderDesktopLazy />}
     </Suspense>
   );

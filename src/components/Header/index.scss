@@ -1,0 +1,17 @@
+@import "../../colormap.scss";
+
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: $black1;
+
+  &.desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.navlink {
+}

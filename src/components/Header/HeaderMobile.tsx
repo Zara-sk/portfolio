@@ -1,16 +1,12 @@
 import React, { lazy, useEffect } from "react";
-import Navbar from "../Navbar";
+import { NavbarMobile } from "../Navbar";
 
-// const NavbarLazy = lazy(() => import("../Navbar"));
+import "./index.scss";
 
 const HeaderMobile: React.FC = () => {
-  useEffect(() => {
-    console.log("mobile loaded");
-  }, []);
   return (
-    <div>
-      Header Mobile
-      <Navbar />
+    <div className="header mobile">
+      <NavbarMobile />
     </div>
   );
 };

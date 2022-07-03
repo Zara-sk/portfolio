@@ -1,14 +1,6 @@
-import React from "react";
+import { lazy } from "react";
 
-const Navbar = () => {
-  return (
-    <div>
-      <p>Some navbar</p>
-      <p>Some navbar</p>
-      <p>Some navbar</p>
-      <p>Some navbar</p>
-    </div>
-  );
-};
+const NavbarMobile = lazy(() => import("./NavbarMobile"));
+const NavbarDesktop = lazy(() => import("./NavbarDesktop"));
 
-export default Navbar;
+export { NavbarMobile, NavbarDesktop };

@@ -1,4 +1,3 @@
-import { Dispatch } from "redux";
 import { windowAction, windowActionTypes } from "../../types/window";
 
 export const fetchWindowWidth = (): windowAction => {
