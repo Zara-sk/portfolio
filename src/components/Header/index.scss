@@ -8,10 +8,44 @@
   &.desktop {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-  }
-}
 
-.navlink {
+    .block {
+      width: 240px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navlink {
+      outline: none;
+      text-decoration: none;
+      color: $white1;
+      transition: color 0.2s;
+
+      &:hover,
+      &.active {
+        color: $cyan;
+      }
+    }
+
+    .text {
+      font-size: 0.9em;
+      font-weight: 600;
+      font-family: Sans-serif;
+    }
+  }
+
+  &.mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    .block {
+      width: 300px;
+    }
+  }
 }
