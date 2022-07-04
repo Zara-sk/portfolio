@@ -19,7 +19,7 @@ const HeaderDesktop = () => {
         </NavLink>
       </div>
       <div className="block block-contact">
-        <p className="text">Контакты</p>
+        <p className="text">CONTACTS</p>
       </div>
     </header>
   );

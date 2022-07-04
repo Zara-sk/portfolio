@@ -2,7 +2,7 @@
 
 .header {
   width: 100%;
-  height: 70px;
+  height: 100px;
   background-color: $black1;
 
   &.desktop {
@@ -12,29 +12,46 @@
     align-items: center;
 
     .block {
-      width: 240px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+
+      &.block-logo {
+        width: 120px;
+      }
+      &.block-nav {
+        width: 240px;
+      }
+      &.block-contact {
+        width: 140px;
+      }
     }
 
     .navlink {
       outline: none;
+      height: 30px;
       text-decoration: none;
-      color: $white1;
-      transition: color 0.2s;
+      box-sizing: border-box;
 
-      &:hover,
       &.active {
         color: $cyan;
+        border-bottom: 2px solid $cyan;
       }
     }
 
     .text {
+      padding: 5px 0;
       font-size: 0.9em;
       font-weight: 600;
       font-family: Sans-serif;
+      color: $white1;
+      transition: color 0.4s;
+      cursor: pointer;
+
+      &:hover {
+        color: $cyan;
+      }
     }
   }
 
