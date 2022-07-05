@@ -191,51 +191,8 @@ $dif-width: ($navblock-width - $sum-width) / 2;
     position: -webkit-sticky;
     top: 0;
 
-    &.show {
-      .block-nav {
-        &:after {
-          @include animation(1.2s flash-in forwards);
-        }
-
-        .text {
-          visibility: hidden;
-          &.home {
-            @include animation(0.2s 0.3s show-text forwards);
-          }
-          &.skills {
-            @include animation(0.5s 0.3s show-text forwards);
-          }
-          &.projects {
-            @include animation(0.8s 0.3s show-text forwards);
-          }
-        }
-      }
-    }
-
     &.hide {
       @include animation(0.1s 1s hide-header forwards);
-
-      .block-nav {
-        &:after {
-          @include animation(1s flash-out forwards);
-        }
-        &:before {
-          height: 0;
-        }
-
-        .text {
-          padding-top: 5px;
-          &.home {
-            @include animation(0.3s 0.3s hide-text forwards);
-          }
-          &.skills {
-            @include animation(0.3s 0.3s hide-text forwards);
-          }
-          &.projects {
-            @include animation(0.3s 0.3s hide-text forwards);
-          }
-        }
-      }
     }
 
     .block {
@@ -243,63 +200,79 @@ $dif-width: ($navblock-width - $sum-width) / 2;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-    }
 
-    .block-logo {
-      width: 120px;
-    }
-    .block-nav {
-      width: $navblock-width;
-      position: relative;
-      overflow-y: hidden;
+      &.block-logo {
+        width: 120px;
+      }
+      &.block-nav {
+        width: $navblock-width;
+        position: relative;
+        overflow-y: hidden;
+        // display: block;
+        // transition: 0.5s;
 
-      &:before,
-      &:after {
-        content: "";
-        position: absolute;
-        height: 2px;
-        width: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-        margin: 0;
-        background: $cyan;
-        transition: 0.5s;
-      }
+        &.hide {
+          // display: none;
+        }
 
-      &.htp:before {
-        @include animation(0.6s htp forwards);
-      }
-      &.pth:before {
-        @include animation(0.6s pth forwards);
-      }
-      &.hts:before {
-        @include animation(0.6s hts forwards);
-      }
-      &.sth:before {
-        @include animation(0.6s sth forwards);
-      }
-      &.pts:before {
-        @include animation(0.6s pts forwards);
-      }
-      &.stp:before {
-        @include animation(0.6s stp forwards);
-      }
+        &.show:after {
+          @include animation(1.2s flash-in forwards);
+        }
+        &.hide:after {
+          @include animation(1s flash-out forwards);
+        }
 
-      &.h:before {
-        @include animation(0.2s 1s h forwards);
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 1;
+          margin: 0;
+          background: $cyan;
+          transition: 0.5s;
+        }
+
+        &.htp:before {
+          @include animation(0.6s htp forwards);
+        }
+        &.pth:before {
+          @include animation(0.6s pth forwards);
+        }
+        &.hts:before {
+          @include animation(0.6s hts forwards);
+        }
+        &.sth:before {
+          @include animation(0.6s sth forwards);
+        }
+        &.pts:before {
+          @include animation(0.6s pts forwards);
+        }
+        &.stp:before {
+          @include animation(0.6s stp forwards);
+        }
+
+        &.h:before {
+          @include animation(0.2s 1s h forwards);
+        }
+        &.s:before {
+          @include animation(0.2s 1s s forwards);
+        }
+        &.p:before {
+          @include animation(0.2s 1s p forwards);
+        }
+        &.hide:before {
+          height: 0;
+        }
       }
-      &.s:before {
-        @include animation(0.2s 1s s forwards);
+      &.block-contact {
+        width: 140px;
+        color: $white1;
       }
-      &.p:before {
-        @include animation(0.2s 1s p forwards);
-      }
-    }
-    .block-contact {
-      width: 140px;
-      color: $white1;
     }
 
     .navlink {
@@ -336,7 +309,30 @@ $dif-width: ($navblock-width - $sum-width) / 2;
       &.projects {
         width: $projects-width;
       }
-
+      &.show {
+        visibility: hidden;
+      }
+      &.hide {
+        padding-top: 5px;
+      }
+      &.home.hide {
+        @include animation(0.3s 0.3s hide-text forwards);
+      }
+      &.skills.hide {
+        @include animation(0.3s 0.3s hide-text forwards);
+      }
+      &.projects.hide {
+        @include animation(0.3s 0.3s hide-text forwards);
+      }
+      &.home.show {
+        @include animation(0.2s 0.3s show-text forwards);
+      }
+      &.skills.show {
+        @include animation(0.5s 0.3s show-text forwards);
+      }
+      &.projects.show {
+        @include animation(0.8s 0.3s show-text forwards);
+      }
       &:hover {
         color: $cyan;
       }

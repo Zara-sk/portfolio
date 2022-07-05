@@ -1,6 +1,11 @@
 @import "../../colormap.scss";
 
 .page-home {
-  height: 400px;
+  padding-top: 300px;
+  height: 1400px;
   background-color: $black1;
+  position: inherit;
+  color: $white1;
+  font-family: sans-serif;
+  font-size: 20px;
 }
