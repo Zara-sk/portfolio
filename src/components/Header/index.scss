@@ -1,15 +1,6 @@
 @import "../../colormap.scss";
 @import "../../mixins.scss";
 
-@include keyframes(anim-underline) {
-  0% {
-    border-bottom: 2px solid #00000000;
-  }
-  100% {
-    border-bottom: 2px solid $cyan;
-  }
-}
-
 @include keyframes(hide-text) {
   0% {
     padding-top: 5px;
@@ -41,65 +32,61 @@
   }
 }
 
-@include keyframes(show-nav) {
+@include keyframes(hide-section) {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@include keyframes(show-section) {
   0% {
     visibility: hidden;
+    opacity: 0;
   }
   100% {
     visibility: visible;
+    opacity: 1;
   }
 }
 
 @include keyframes(hide-header) {
   0% {
-    height: 100px;
     position: sticky;
-    margin-bottom: 0;
   }
   100% {
-    height: 0;
     position: relative;
-    margin-bottom: 100px;
-  }
-}
-
-@include keyframes(show-header) {
-  0% {
-    height: 0;
-    position: relative;
-    margin-bottom: 100px;
-  }
-  100% {
-    height: 100px;
-    position: sticky;
-    margin-bottom: 0;
   }
 }
 
 // Да простят меня за это...
 // ps во славу анимации без js
-$navblock-width: 240px;
-$home-width: 43.2px;
-$skills-width: 51.21px;
-$projects-width: 77.63px;
+$navblock-width: 270px;
+$home-width: 48.6px;
+$skills-width: 57.61px;
+$projects-width: 87.33px;
 
-$sum-width: $home-width + $skills-width + $projects-width;
-$dif-width: ($navblock-width - $sum-width) / 2;
+$sum-width: calc($home-width + $skills-width + $projects-width);
+$dif-width: calc(($navblock-width - $sum-width) / 2);
 
 @mixin change_nav($name, $from, $to) {
   $sum-w: (
     htp: $navblock-width,
     pth: $navblock-width,
-    sth: $home-width + $skills-width + $dif-width,
-    hts: $home-width + $skills-width + $dif-width,
-    stp: $projects-width + $skills-width + $dif-width,
-    pts: $projects-width + $skills-width + $dif-width,
+    sth: calc($home-width + $skills-width + $dif-width),
+    hts: calc($home-width + $skills-width + $dif-width),
+    stp: calc($projects-width + $skills-width + $dif-width),
+    pts: calc($projects-width + $skills-width + $dif-width),
     flash: $navblock-width,
   );
   $left-indent: (
     home: 0,
-    skills: $home-width + $dif-width,
-    projects: $home-width + $skills-width + 2 * $dif-width,
+    skills: calc($home-width + $dif-width),
+    projects: calc($home-width + $skills-width + 2 * $dif-width),
     nav_start: 0,
     nav_end: $navblock-width,
   );
@@ -139,7 +126,6 @@ $dif-width: ($navblock-width - $sum-width) / 2;
 @include change_nav(h, home, home);
 @include change_nav(s, skills, skills);
 @include change_nav(p, projects, projects);
-@include change_nav(flash, nav_start, nav_end);
 
 @include keyframes(flash-in) {
   0% {
@@ -180,7 +166,7 @@ $dif-width: ($navblock-width - $sum-width) / 2;
 .header {
   width: 100%;
   height: 100px;
-  // background-color: $black1;
+  font-size: 1rem;
 
   &.desktop {
     display: flex;
@@ -210,6 +196,10 @@ $dif-width: ($navblock-width - $sum-width) / 2;
           }
         }
       }
+      .block.block-contact {
+        visibility: hidden;
+        @include animation(0.4s 0.2s show-section forwards);
+      }
     }
 
     &.hide {
@@ -236,6 +226,10 @@ $dif-width: ($navblock-width - $sum-width) / 2;
           }
         }
       }
+      .block.block-contact {
+        visibility: visible;
+        @include animation(0.4s 0.2s hide-section forwards);
+      }
     }
 
     .block {
@@ -257,7 +251,7 @@ $dif-width: ($navblock-width - $sum-width) / 2;
       &:after {
         content: "";
         position: absolute;
-        height: 2px;
+        height: 3px;
         width: 0;
         right: 0;
         bottom: 0;

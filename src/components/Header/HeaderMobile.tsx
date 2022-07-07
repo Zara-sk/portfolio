@@ -1,5 +1,5 @@
-import React, { lazy, useEffect } from "react";
-import { NavbarMobile } from "../Navbar";
+import React, { useEffect } from "react";
+import NavbarMobile from "./Navbar/NavbarMobile";
 
 import "./index.scss";
 

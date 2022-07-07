@@ -1,14 +1,11 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { ILink } from "../../types/link";
+import NavbarDesktop from "./Navbar/NavbarDesktop";
 
 import "./index.scss";
 
-interface items {
-  [key: string]: { name: string; cls: string; slug: string };
-}
-
-const links: items = {
+const links: ILink = {
   "/": { name: "HOME", cls: "home", slug: "h" },
   "/skills": { name: "SKILLS", cls: "skills", slug: "s" },
   "/projects": { name: "PROJECTS", cls: "projects", slug: "p" },
@@ -29,21 +26,13 @@ const HeaderDesktop = () => {
 
   return (
     <header className={"header desktop" + (isScrolled ? " hide" : " show")}>
-      <div className="block block-logo"></div>
-      <div className={"block block-nav " + transition}>
-        {Object.keys(links).map((link) => (
-          <NavLink
-            to={link}
-            className={`navlink ${links[link].cls} `}
-            onClick={() => changePage(links[link].slug)}
-          >
-            <p className={`text ${links[link].cls}`}>{links[link].name}</p>
-          </NavLink>
-        ))}
-      </div>
-      <div className="block block-contact">
+      <section className="block block-logo"></section>
+      <section className={"block block-nav " + transition}>
+        <NavbarDesktop links={links} changePage={changePage}></NavbarDesktop>
+      </section>
+      <section className="block block-contact">
         <p className={"text contacts"}>CONTACTS</p>
-      </div>
+      </section>
     </header>
   );
 };

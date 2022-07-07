@@ -36,7 +36,7 @@ const AppEntry: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "#1a1a1a", height: "content-box" }}>
+    <React.Fragment>
       <HeaderCombined />
       <Suspense>
         <Routes>
@@ -46,7 +46,7 @@ const AppEntry: React.FC = () => {
         </Routes>
       </Suspense>
       <Footer />
-    </div>
+    </React.Fragment>
   );
 };
 
